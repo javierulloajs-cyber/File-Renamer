@@ -61,7 +61,9 @@ fn renombrar_modo_agregacion(directorio: PathBuf, renombrado: &String, extension
         let file_extension  = archivo.extension().expect("[J]: No se puede extraer la extensión.").to_string_lossy().to_string();
 
         // Parte 2.1: Evitar que avance si no segura que tendra el nombre y extensión que venia por default.
-        if !renombrado.contains("[FILE_NAME]") && !renombrado.contains("[EXTENSION]") {
+        //La condición estaba mal escrita, por lo  que se podía renombrar
+        // Sin tener uno de los dos
+        if !renombrado.contains("[FILE_NAME]") || !renombrado.contains("[EXTENSION]") {
             panic!("[J]: Este modo necesita el nombre y extensión original del archivo.");
         }
 
